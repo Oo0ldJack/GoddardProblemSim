@@ -12,9 +12,11 @@ namespace Goddard.Core
         public double G0 = 1.0;
         public double Hc = 500.0;
         public double Vc = 620.0;
-        public double M0 = 3.0; // стартовая масса
-        public double Mf = 1.0; // сухая масса
-        public double UMax = 3.5; // max расход
+        public double M0 = 1.0;
+        public double Mc = 0.6;
+        public double Mf => Mc * M0;              // 0.6
+        public double Tc = 3.5;
+        public double UMax => Tc * M0 * G0;       // T_max = 3.5 — управление = ТЯГА
         
         public bool EnableDrag = true;
         public bool EnableGravity = true;
@@ -22,11 +24,11 @@ namespace Goddard.Core
         /// <summary>
         /// Эффективная скорость истечения c.
         /// </summary>
-        public double C => 0.5 * Math.Sqrt(G0 * H0) * Vc;
+        public double C => 0.5 * Math.Sqrt(G0 * H0);  // 0.5
         
         /// <summary>
         /// Коэффициент сопротивления Dc.
         /// </summary>
-        public double Dc => 0.5 * Vc * M0 / G0;
+        public double Dc => 0.5 * Vc * M0 / G0;       // 310
     }
 }
