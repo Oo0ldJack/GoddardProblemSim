@@ -198,3 +198,7 @@ sysinfo.txt
 
 # 3. Игнорируем packages-lock.json
 Packages/packages-lock.json
+
+# 4. Игнорируем runs/
+/[Aa]ssets/[Rr]uns/
+/[Aa]ssets/[Rr]uns.meta
