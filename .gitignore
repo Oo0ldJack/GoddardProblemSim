@@ -202,3 +202,5 @@ Packages/packages-lock.json
 # 4. Игнорируем runs/
 /[Aa]ssets/[Rr]uns/
 /[Aa]ssets/[Rr]uns.meta
+/[Aa]ssets/[Oo]ptimal_profiles/
+/[Aa]ssets/[Oo]ptimal_profiles.meta

@@ -8,7 +8,7 @@ namespace Goddard.Core
     /// </summary>
     public static class SceneUnits
     {
-        public const float ModelHeightToMeters = 1000f;     // H: 1 ед. высоты = 100 м
+        public const float ModelHeightToMeters = 1000f;     // H: 1 ед. высоты = 1000 м
         public const float SecondsPerModelTime = 30f;       // T: замедление для наблюдения
         public const float ModelSurfaceH = 1f;              // y=0 сцены = h=H0 модели
 

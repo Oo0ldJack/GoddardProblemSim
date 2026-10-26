@@ -18,7 +18,9 @@ namespace Goddard.Stand
         public class RunMeta
         {
             public string runId;
-            public string controllerType;      // "pid" | "full_thrust" | "optimal"
+            public string controllerType;   // pid | fullthrust | optimal (способ задания управления)
+            public string profileName;      // какой именно профиль: "naive-pwm" | "greedy-junction" | "pmp-clean"
+            public int profilePoints;       // узлов в профиле (санити-чек при разборе логов)
 
             // --- настройки контроллера (pid: заполнено; прочее: 0) ---
             public float kp, ki, kd, targetSpeed, rampTime;

@@ -2,7 +2,9 @@ using UnityEngine;
 
 namespace Goddard.Stand
 {
-    /// <summary>Запускает и завершает прогон: границы жизни телеметрии.</summary>
+    /// <summary>
+    /// Запускает и завершает прогон: границы жизни телеметрии.
+    /// </summary>
     public class RunManager : MonoBehaviour
     {
         public RocketVariableMass rocket;
@@ -16,11 +18,13 @@ namespace Goddard.Stand
         {
             
             var src = rocket.thrustSource;
+            var player = src as ThrustProfilePlayer;   // Awake всех компонентов уже отработал
             controllerType = src switch
             {
                 PidController => "pid",
-                FullThrustController => "full_thrust",
-                _ => src != null ? src.GetType().Name : "none",   // ThrustProfilePlayer → "optimal" добавим на з.3
+                FullThrustController => "fullthrust",
+                ThrustProfilePlayer => "optimal",
+                _ => src != null ? src.GetType().Name : "none",
             };
 
             var P = Goddard.Core.Params.P;
@@ -29,6 +33,8 @@ namespace Goddard.Stand
             {
                 runId          = System.DateTime.Now.ToString("yyyyMMdd_HHmmss"),
                 controllerType = controllerType,
+                profileName = player != null ? player.ProfileLabel : "",
+                profilePoints = player != null && player.Points != null ? player.Points.Length : 0,
                 kp = pid != null ? pid.kp : 0f,
                 ki = pid != null ? pid.ki : 0f,
                 kd = pid != null ? pid.kd : 0f,
