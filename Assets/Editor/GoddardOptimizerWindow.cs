@@ -102,6 +102,9 @@ namespace Goddard.Stand.EditorTools
             {
                 if (ValidateRegion())
                 {
+                    string dir = Path.Combine(Application.dataPath, "optimal_profiles");
+                    Directory.CreateDirectory(dir);
+
                     var scan = ParameterOptimizer.ScanGrid(s1Lo, s1Hi, nS1, s2Lo, s2Hi, nS2, steps, tEnd);
                     var sb = new StringBuilder("s1,s2,h_max\n");
                     for (int i = 0; i < scan.S1Grid.Length; i++)
@@ -193,6 +196,8 @@ namespace Goddard.Stand.EditorTools
                 label = label,
                 points = pts.Select(q => new ThrustProfilePoint { t = q.t, u = q.u }).ToArray()
             };
+            string dir = Path.Combine(Application.dataPath, "optimal_profiles");
+            Directory.CreateDirectory(dir);
             File.WriteAllText(path, JsonUtility.ToJson(profile, prettyPrint: true));
             AssetDatabase.Refresh();
         }
